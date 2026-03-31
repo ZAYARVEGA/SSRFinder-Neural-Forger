@@ -433,26 +433,26 @@ The GUI provides:
 SSRFinder is the **base application** with 15 Python files. Neural Forger is an **extension** with 10 additional `neuralforger-*.py` files that import from SSRFinder's modules.
 
 ```
-SSRFinder (standalone)              Neural Forger (extension)
-========================            ================================
+SSRFinder (standalone)                    Neural Forger (extension)
+========================                  ================================
 
-main.py (entry point)               neuralforger-main.py (entry point)
-├── banner.py                       ├── neuralforger-banner.py
-├── cli_parser.py                   ├── neuralforger-cli.py
-├── config.py ◄──────────────────────── neuralforger-config.py
-├── ssrfinder_class.py              ├── neuralforger-ml.py
-│   ├── request_parser.py ◄──────────── │ (imports parse_raw_request)
-│   ├── request_sender.py ◄──────────── │ (imports create_session, send_request)
-│   ├── injection_handler.py ◄────────── │ (imports find/replace_injection_point)
+main.py (entry point)                     neuralforger-main.py (entry point)
+├── banner.py                             ├── neuralforger-banner.py
+├── cli_parser.py                         ├── neuralforger-cli.py
+├── config.py ◄───────────────────────────── neuralforger-config.py
+├── ssrfinder_class.py                    ├── neuralforger-ml.py
+│   ├── request_parser.py ◄────────────── │ (imports parse_raw_request)
+│   ├── request_sender.py ◄────────────── │ (imports create_session, send_request)
+│   ├── injection_handler.py ◄─────────── │ (imports find/replace_injection_point)
 │   ├── payload_generator.py ◄─────────── │ (imports generate_payloads)
-│   ├── confidence_calculator.py ◄───── neuralforger-confidence.py
-│   ├── response_formatter.py ◄──────── │ (imports format_response_preview)
-│   └── summary_printer.py          ├── neuralforger-output.py
-├── network_parser.py ◄─────────────── │ (imports parse_ip_range, parse_ports)
-├── url_encoding.py ◄───────────────── │ (imports url_encode, add_path)
-└── __init__.py                     ├── neuralforger-detector.py (ML engine)
-                                    ├── neuralforger-gui.py
-                                    └── neuralforger-test.py
+│   ├── confidence_calculator.py ◄────────── neuralforger-confidence.py
+│   ├── response_formatter.py ◄────────── │ (imports format_response_preview)
+│   └── summary_printer.py                ├── neuralforger-output.py
+├── network_parser.py ◄────────────────── │ (imports parse_ip_range, parse_ports)
+├── url_encoding.py ◄──────────────────── │ (imports url_encode, add_path)
+└── __init__.py                           ├── neuralforger-detector.py (ML engine)
+                                          ├── neuralforger-gui.py
+                                          └── neuralforger-test.py
 ```
 
 **Key design principle:** SSRFinder knows nothing about Neural Forger. It works completely independently. Neural Forger imports SSRFinder's modules and extends them — it never duplicates functionality.
