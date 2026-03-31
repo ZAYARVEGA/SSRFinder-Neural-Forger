@@ -91,7 +91,7 @@ Both tools work independently — SSRFinder runs standalone without Neural Forge
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/ssrfinder.git
+git clone https://github.com/zayarvega/ssrfinder.git
 cd ssrfinder
 
 # Install dependencies
